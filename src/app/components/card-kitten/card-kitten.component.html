@@ -1,0 +1,24 @@
+<div
+  class="mw-50"
+  (mouseenter)="showKittenInfos = true"
+  (mouseleave)="showKittenInfos = false"
+>
+  <img
+    src="{{ kitten?.imageUrl }}"
+    class="card-img-top"
+    alt="{{ kitten?.name }}"
+  />
+  <div class="card-body">
+    <h5 class="card-title">{{ kitten?.name }}</h5>
+    <p *ngIf="showKittenInfos" class="card-text">
+      {{ kitten?.race }} - {{ kitten?.birthDate }}
+    </p>
+    <button
+      *ngIf="isAdoptActive"
+      class="btn btn-primary"
+      (click)="adoptKitten()"
+    >
+      Adopter
+    </button>
+  </div>
+</div>

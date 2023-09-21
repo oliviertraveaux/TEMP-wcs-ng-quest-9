@@ -1,0 +1,29 @@
+<div class="d-flex flex-wrap">
+  <ng-container *ngIf="kittenList.length; else nokitten">
+    <div
+      *ngFor="let kitten of kittenList; index as i; trackBy: trackByIndex"
+      class="card m-2"
+      style="max-width: 50%"
+    >
+      <app-card-kitten
+        [isAdoptActive]="isAdoptActive"
+        [kitten]="kitten"
+        [index]="i"
+        (sendKittenToParent)="onReceiveKitten($event)"
+      ></app-card-kitten>
+    </div>
+  </ng-container>
+
+  <ng-template
+    #nokitten
+    class="d-flex flex-column justify-content-center align-items-center"
+    style="width: 100%"
+  >
+    Pas de chat à adopter !
+    <img
+      height="200px"
+      src="https://i.kym-cdn.com/entries/icons/original/000/034/772/Untitled-1.png"
+      alt=""
+    />
+  </ng-template>
+</div>

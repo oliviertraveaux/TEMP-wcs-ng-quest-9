@@ -1,0 +1,19 @@
+<h1 class="text-center">{{ title }}</h1>
+<div class="container-fluid col-10 bg-light">
+  <app-create-kitten
+    (sendKittenToParent)="onReceiveNewKitten($event)"
+  ></app-create-kitten>
+  <div class="row">
+    <div class="col-8">
+      <app-list-kitten
+        [kittenList]="kittenList"
+        (sendKittenToUserList)="onReceiveKittenToAdopt($event)"
+        (updateKittenList)="onReceiveFilteredKittenList($event)"
+        [isAdoptActive]="true"
+      ></app-list-kitten>
+    </div>
+    <div class="col-4">
+      <app-user-kitten [userKittenList]="userKittenList"></app-user-kitten>
+    </div>
+  </div>
+</div>
